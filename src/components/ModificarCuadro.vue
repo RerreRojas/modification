@@ -32,28 +32,26 @@
       <div>
         <span>Tamaño de letra</span>
         <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="p" value="0.5rem"
-                v-model="size" />
-              <label class="form-check-label fw-normal" for="p"> Pequeño </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="m" value="1rem"
-                v-model="size" />
-              <label class="form-check-label fw-normal" for="m"> Mediano </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="g" value="5rem"
-                v-model="size" />
-              <label class="form-check-label fw-normal" for="g"> Grande </label>
-            </div>
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="p" value="0.5rem" v-model="size" />
+          <label class="form-check-label fw-normal" for="p"> Pequeño </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="m" value="1rem" v-model="size" />
+          <label class="form-check-label fw-normal" for="m"> Mediano </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="g" value="5rem" v-model="size" />
+          <label class="form-check-label fw-normal" for="g"> Grande </label>
+        </div>
       </div>
-      
+
 
 
     </form>
 
     <div id="cuadrado"
-      :style="{ background: colorCuadrado, color: colorLetra, borderRadius: radioCompleto, fontFamily: typography, fontSize: size, opacity: opaco,}">
+      :style="{ background: colorCuadrado, color: colorLetra, borderRadius: radioCompleto, fontFamily: typography, fontSize: size, }"
+      :class="{ 'opaco': opaco }">
       <h1 v-if="show"> {{ texto }}</h1>
     </div>
 
@@ -75,7 +73,7 @@ export default {
       maximo: "",
       texto: "",
       typography: "",
-      opaco: "",
+      opaco: false,
       size: "",
       tipografias: ["Times New Roman", "Georgia", "Arial", "Verdana", "Tahoma", "Sanvito", "Courier",],
 
@@ -94,8 +92,14 @@ export default {
 #cuadrado {
   height: 300px;
   width: 300px;
-  
-  
 
+}
+.opaco {
+  opacity: 0.5; /* o cualquier valor de opacidad que desees */
+}
+form > div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 </style>
